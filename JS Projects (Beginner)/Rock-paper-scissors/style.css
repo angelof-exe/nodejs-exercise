@@ -1,0 +1,32 @@
+.container {
+    text-align: center;
+    margin-top: 100px;
+    background-color: antiquewhite;
+    border-radius: 10px;
+}
+
+.row {
+    display: inline-block;
+}
+
+button[type="image"] {
+    margin: 10px;
+}
+
+h2 {
+    font-size: 75;
+}
+
+.container>span {
+    font-size: 50px;
+}
+
+
+p {
+    font-size: 25px;
+}
+
+.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+}

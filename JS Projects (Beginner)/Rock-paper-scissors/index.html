@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Rock-Paper-Scissors</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Rock-Paper-Scissors</h1>
+        <div class="row">
+            <button type="image" disabled="false">
+                <img src="image/paper.png" alt="Paper" id="paperBtn" height="150px">
+            </button>
+            <button type="image" disabled="false">
+                <img src="image/scissor.png" alt="Scissor" id="scissorBtn" height="150px">
+            </button>
+            <button type="image" disabled="false">
+                <img src="image/rock.png" alt="Rock" id="rockBtn" height="150px">
+            </button>
+        </div>
+        <h2>Punteggio</h2>
+        <span id="player_points">0</span><span>-</span><span id="CPU_points">0</span><br>
+        <p>Scelta della CPU: <span id="CPU_choice" style="font-weight: bold;"></span></p>
+        <p id="status" style="font-weight: bolder;"></p>
+        <p id="refresh_page" style="font-weight: 600;"></p>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>
