@@ -1,0 +1,4 @@
+Creare una libreria con NodeJS, nell'interfaccia creare un form con "titolo d'autore" "pagine" "tiolot" ecc...
+Con questi dati inviati (sarebbe un JSOn) ovvero un oggetto in JavaScript, lo si invia al server (specificare che si sta inviando un json).
+Nel server una richiesta post deve ricevere questa richiesta e scrivere un file, dopodichè inviarlo al client.
+Si può fare una richiesta di get continua subito aver fatto una richiesta di post. Richiedendo continuamente i dati al server
