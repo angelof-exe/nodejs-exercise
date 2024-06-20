@@ -59,15 +59,25 @@ button.addEventListener('click', function () {
 });
 
 function createComponent(libro, index) {
+    // return `
+    //     <div>
+    //         <h3>Libro numero ${index + 1}</h3>
+    //         <span><span style="font-weight: bold;">TITOLO: </span>${libro.titolo}</span><br>
+    //         <span><span style="font-weight: bold;">AUTORE: </span>${libro.autore}</span><br>
+    //         <span><span style="font-weight: bold;">N. PAGINE: </span>${libro.pagine}</span><br>
+    //         <span><span style="font-weight: bold;">ANNO: </span>${libro.anno}</span><br>
+    //     </div>
+    //     <br>
+    // `;
     return `
-        <div>
-            <h3>Libro numero ${index + 1}</h3>
-            <span><span style="font-weight: bold;">TITOLO: </span>${libro.titolo}</span><br>
-            <span><span style="font-weight: bold;">AUTORE: </span>${libro.autore}</span><br>
-            <span><span style="font-weight: bold;">N. PAGINE: </span>${libro.pagine}</span><br>
-            <span><span style="font-weight: bold;">ANNO: </span>${libro.anno}</span><br>
+    <div class="card mx-4" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">${libro.titolo}</h5>
+            <p class="card-text"><span style="font-weight: bold;">AUTORE: </span>${libro.autore}</p>
+            <p class="card-text"><span style="font-weight: bold;">N. PAGINE: </span>${libro.pagine}</p>
+            <p class="card-text"><span style="font-weight: bold;">ANNO: </span>${libro.anno}</p>
         </div>
-        <br>
+    </div>
     `;
 }
 

@@ -8,6 +8,29 @@ const port = 3000;
 // https://stackoverflow.com/questions/53054756/javascript-appending-object-to-json-file
 // !!!!!!!!!!!!!!!!!!
 
+// fs.readFile("libreria.json", 'utf8', (err, data) => {
+//     if (data.length) {
+//         console.log('File is empty, writing empty array.');
+//         fs.writeFile("libreria.json", '[]', 'utf8', (err) => {
+//         else {
+//                 console.log("file is not empty");
+//             }
+//         }
+//     } else {
+//         console.log('File is not empty.');
+//     }
+// });
+
+fs.readFile("libreria.json", (err, file) => {
+    if (file.length == 0) {
+        console.log('File is empty, writing empty array.');
+        fs.writeFileSync("libreria.json", '[]', 'utf8')
+    } else {
+        console.log("file is not empty")
+    }
+})
+
+
 app.use(express.static('public'));
 app.use(express.json());
 
