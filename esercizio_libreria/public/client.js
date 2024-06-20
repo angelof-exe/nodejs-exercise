@@ -3,65 +3,77 @@ const titolo = document.getElementById('titolo');
 const autore = document.getElementById('autore');
 const pagine = document.getElementById('pagine');
 const anno = document.getElementById('anno');
-const body = document.getElementById('body');
+const display = document.getElementById('display');
+
 let datiLibro;
 let i = 0;
 
 prendiLibri();
 
+//Fa dei check sull'inseirmento corretto di valori negli input
+function checkInp() {
+    if (!titolo.value || !autore.value || !pagine.value || !anno.value) {
+        alert("Tutti i campi sono obbligatori.");
+        return false;
+    }
+    if (isNaN(pagine.value) || isNaN(anno.value)) {
+        alert("I campi Numero Pagine e Anno di rilascio devono essere numeri.");
+        return false;
+    }
+    return true;
+}
+
 function prendiLibri() {
     fetch('/getLibri', {
         headers: { 'Content-Type': 'application/json' },
         method: 'GET',
-        // body: JSON.stringify(datiLibro)
-    })
-        .then(response => response.json())
-        .then(data => {
-            console.log(data)
-            console.log(`Lunghezza del JSOn ${Object.keys(data[0]).length} + 1`);
-        })
-}
-
-
-button.addEventListener('click', function () {
-    datiLibro = {
-        'titolo': titolo.value,
-        'autore': autore.value,
-        'pagine': pagine.value,
-        'anno': anno.value
-    }
-
-    // console.log(datiLibro);
-
-    fetch('/sendData', {
-        headers: { 'Content-Type': 'application/json' },
-        method: 'POST',
-        body: JSON.stringify(datiLibro)
     })
         .then(response => response.json())
         .then(data => {
             console.log(data);
-            button.insertAdjacentHTML("afterend", createComponent(data));
-            i++;
-        })
-    // .then(button.insertAdjacentHTML("afterend", `<br><span id="titolo">provaaaa</span>`))
-    // .then(response => response.text())
-})
+            stampaLibriEsistenti(data);
+        });
+}
 
-function createComponent(data) {
+button.addEventListener('click', function () {
+    if (checkInp() == true) {
+        datiLibro = {
+            'titolo': titolo.value,
+            'autore': autore.value,
+            'pagine': pagine.value,
+            'anno': anno.value
+        }
+
+        fetch('/sendData', {
+            headers: { 'Content-Type': 'application/json' },
+            method: 'POST',
+            body: JSON.stringify(datiLibro)
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                display.innerHTML = ''; // Pulisci il display prima del rendering
+                stampaLibriEsistenti(data);
+            });
+    }
+});
+
+function createComponent(libro, index) {
     return `
-            <br>
-            <h3>Libro numero ${i + 1}</h3>
-            <span id="titolo"><span style="font-weight: bold;">TITOLO: </span>${data[i]["titolo"]}</span>
-            <span id="autore"><span style="font-weight: bold;">AUTORE: </span>${data[i]["autore"]}</span>
-            <span id="n_pagine"><span style="font-weight: bold;">N. PAGINE: </span>${data[i]["pagine"]}</span>
-            <span id="anno"><span style="font-weight: bold;">ANNO: </span>${data[i]["anno"]}</span>
-            `;
+        <div>
+            <h3>Libro numero ${index + 1}</h3>
+            <span><span style="font-weight: bold;">TITOLO: </span>${libro.titolo}</span><br>
+            <span><span style="font-weight: bold;">AUTORE: </span>${libro.autore}</span><br>
+            <span><span style="font-weight: bold;">N. PAGINE: </span>${libro.pagine}</span><br>
+            <span><span style="font-weight: bold;">ANNO: </span>${libro.anno}</span><br>
+        </div>
+        <br>
+    `;
 }
 
 function stampaLibriEsistenti(data) {
-    for (let index = 0; index < array.length; index++) {
-
-
-    };
+    display.innerHTML = '';
+    data.forEach((libro, index) => {
+        display.innerHTML += createComponent(libro, index);
+    });
 }
