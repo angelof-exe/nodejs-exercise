@@ -1,0 +1,46 @@
+{
+    "coord": {
+        "lon": 13.5,
+        "lat": 37.45
+    },
+    "weather": [
+        {
+            "id": 800,
+            "main": "Clear",
+            "description": "clear sky",
+            "icon": "01d"
+        }
+    ],
+    "base": "stations",
+    "main": {
+        "temp": 311.08,
+        "feels_like": 309.94,
+        "temp_min": 310.32,
+        "temp_max": 311.24,
+        "pressure": 1015,
+        "humidity": 21,
+        "sea_level": 1015,
+        "grnd_level": 979
+    },
+    "visibility": 10000,
+    "wind": {
+        "speed": 2.93,
+        "deg": 194,
+        "gust": 2.83
+    },
+    "clouds": {
+        "all": 0
+    },
+    "dt": 1718962048,
+    "sys": {
+        "type": 2,
+        "id": 2080844,
+        "country": "IT",
+        "sunrise": 1718941523,
+        "sunset": 1718994615
+    },
+    "timezone": 7200,
+    "id": 2525763,
+    "name": "Province of Agrigento",
+    "cod": 200
+}
